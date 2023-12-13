@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petersfinal/ItemListPage.dart';
 import 'package:petersfinal/aboutpage.dart';
 import 'package:petersfinal/dataservice.dart';
 
@@ -7,13 +8,15 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
+// Variables for logging in (username and password fields)
 class _LoginPageState extends State<LoginPage> {
   late LocalDataService _localDataService;
-
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  
 
   @override
+  // Set username and password for login (success)
   void initState() {
     super.initState();
     _localDataService = LocalDataService();
@@ -84,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // Checks login credentials status
   void _login() async {
   final savedCredentials = await _localDataService.getCredentials();
   final enteredUsername = _usernameController.text;
@@ -95,19 +99,24 @@ class _LoginPageState extends State<LoginPage> {
     final password = savedCredentials['password'];
 
     if (_usernameController.text == username && _passwordController.text == password) {
-      _showSnackBar('Login success');
-    } else {
-      _showSnackBar('Incorrect password');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ItemListPage()),
+        );
+      } else {
+        _showSnackBar('Incorrect password');
+      }
     }
   }
-}
 
 
+  // Displays message for login feedback (success/error)
   void _showSnackBar(String message) {
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
-
+  
+  // Button to naviage to AboutPage.dart
   void _navigateToAbout() {
     Navigator.push(
       context,

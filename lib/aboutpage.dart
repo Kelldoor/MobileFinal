@@ -7,6 +7,7 @@ class AboutPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('About'),
       ),
+      // Information displayed for the application DogFax
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(

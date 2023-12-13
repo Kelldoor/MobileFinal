@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:petersfinal/login.dart';
+import 'package:petersfinal/Login.dart';
 import 'package:petersfinal/aboutpage.dart'; 
 
 void main() {
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
+      // Navigation routes from Login.dart
       initialRoute: '/', 
       routes: {
         '/': (context) => LoginPage(), 
